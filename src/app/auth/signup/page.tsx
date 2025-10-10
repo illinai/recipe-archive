@@ -29,8 +29,9 @@ export default function SignupPage() {
     try {
       await signUp(email, password, username, fullName)
       router.push('/dashboard') // Redirect after signup
-    } catch (err: any) {
-      setError(err.message || 'Failed to create account')
+    } catch (err) {
+      const error = err as Error
+      setError(error.message || 'Failed to create account')
     } finally {
       setLoading(false)
     }

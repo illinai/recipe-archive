@@ -24,7 +24,7 @@ type Recipe = {
 export default function RecipesPage() {
   const [recipes, setRecipes] = useState<Recipe[]>([])
   const [loading, setLoading] = useState(true)
-  const [currentUser, setCurrentUser] = useState<any>(null)
+  const [currentUser, setCurrentUser] = useState<{id: string} | null>(null)
   const [filter, setFilter] = useState<'all' | 'my-recipes'>('all')
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export default function RecipesPage() {
           <div className="flex justify-between items-center">
             <div>
               <Link href="/dashboard" className="text-blue-600 hover:text-blue-800 text-sm">
-                ← Back to Dashboard
+              &larr; Back to Dashboard
               </Link>
               <h1 className="text-2xl font-bold text-gray-900 mt-2">Browse Recipes</h1>
             </div>

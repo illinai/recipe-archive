@@ -20,8 +20,9 @@ export default function LoginPage() {
     try {
       await signIn(email, password)
       router.push('/dashboard') // Redirect to dashboard after login
-    } catch (err: any) {
-      setError(err.message || 'Failed to sign in')
+    } catch (err) {
+      const error = err as Error
+      setError(error.message || 'Failed to sign in')
     } finally {
       setLoading(false)
     }
@@ -82,7 +83,7 @@ export default function LoginPage() {
           </button>
 
           <div className="text-center text-sm">
-            <span className="text-gray-600">Don't have an account? </span>
+          <span className="text-gray-600">Don&apos;t have an account? </span>
             <Link href="/auth/signup" className="font-medium text-blue-600 hover:text-blue-500">
               Sign up
             </Link>
